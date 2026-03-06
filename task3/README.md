@@ -1,7 +1,7 @@
 Clone dự án
 
 bash
-git clone <your-repo-url>
+git clone https://github.com/ndp-gif/blueoc_test_nguyendinhphuong
 cd <project-folder>
 Cài đặt dependencies
 
