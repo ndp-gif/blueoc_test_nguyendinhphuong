@@ -4,7 +4,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 const API = "https://jsonplaceholder.typicode.com/posts";
 
-// Fetch posts with pagination - Định nghĩa kiểu đầy đủ
+// Fetch posts with pagination 
 export const fetchPosts = createAsyncThunk<
   { data: IPost[]; totalCount: number },  
   { page: number; limit: number },         
@@ -26,7 +26,7 @@ export const fetchPosts = createAsyncThunk<
   }
 );
 
-// Add post - Đã có định nghĩa kiểu đúng
+// Add post 
 export const addPost = createAsyncThunk<
   IPost,                                    // Return type
   INewPost,                                 // Argument type
@@ -82,7 +82,6 @@ const postsSlice = createSlice({
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.loading = false;
-        // Sử dụng action.payload nếu có, nếu không thì dùng action.error.message
         state.error = action.payload ?? action.error.message ?? "Unknown error";
       })
       .addCase(addPost.pending, (state) => {
@@ -94,7 +93,6 @@ const postsSlice = createSlice({
       })
       .addCase(addPost.rejected, (state, action) => {
         state.addingPost = false;
-        // Sử dụng action.payload nếu có, nếu không thì dùng action.error.message
         state.error = action.payload ?? action.error.message ?? "Unknown error";
       });
   },
